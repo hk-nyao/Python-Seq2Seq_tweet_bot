@@ -68,4 +68,4 @@ TWEETS_VAL_ENC_IDX_TXT = "{0}/tweets_val_enc_idx.txt".format(GENERATED_DIR)
 TWEETS_VAL_DEC_IDX_TXT = "{0}/tweets_val_dec_idx.txt".format(GENERATED_DIR)
 
 VOCAB_ENC_TXT = "{0}/vocab_enc.txt".format(GENERATED_DIR)
-VOCAB_DEC_TXT = "{0}/vocab_dec.txt".format(GENERATED_DIR)oVhecMWQEA
+VOCAB_DEC_TXT = "{0}/vocab_dec.txt".format(GENERATED_DIR)
