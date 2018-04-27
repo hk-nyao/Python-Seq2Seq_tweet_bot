@@ -1,77 +1,58 @@
 
 # 目次
 * はじめに
-* このプログラムでできること
-* テキストファイルの役割
+* 使ってみたい場合
+* 各プログラムの役割
 * デモ
-* 引き継ぐ場合
 * 動作環境
 
 
 # はじめに
-  <コードの参照元>
-  <https://github.com/1228337123/tensorflow-seq2seq-chatbot>
-  を元に、tensorflow 1.7.0で動作するよう改変・追加を行ったものです。
-  コードに関して不明な点があれば、元コードを参照すると良いかもしれません。
+## コードの参照元
+本プログラムは以下のサイトを参考に製作しました.<br><https://github.com/1228337123/tensorflow-seq2seq-chatbot><br>
+参考元からの主な変更点は以下の通りです.<br>
+1. tensorflow 1.7.0で動作するよう、一部のメソッド参照先の書き換えを行なった
+2. ツイートの取得プログラムを自作し、より細かい文章のサニタイズを行なった
+3. 機械音声ライブラリのOpen_jtalkやRospeexを利用し、文章だけでなく機械音声による発話をできるようにした
+4. いくつかの改善点（ファイルが存在しないときに自動で生成しない）を修正した
 
-  <引き継ぎについて>
-  プログラムの完成度は低く、特にサニタイズ処理やモデル構築には改良の余地があります。
-  また、Tensorflowはバージョンアップのサイクルが早く、過去のバージョンで使用できた関数の参照場所が
-  変わっていて使用できなくなった、といった問題が発生しやすいです。
+## 注意点
+自作プログラムの完成度は低く、データの取得やサニタイズ処理には改良の余地があります.<br>また、Tensorflowはバージョンアップのサイクルが早く、過去のバージョンで使用できた関数の参照場所が変わっていて使用できなくなった、といった問題が発生しやすいです.
 
 
-# このプログラムでできること
-  1. tweet_get.py - Twitter APIを通して、Twitterに流れるツイートとそのリプライを/data/tweets1M.txtに保存する。
+# 使ってみたい場合
+## 事前準備
+* 電話番号が紐付けされたTwitter アカウントから、Twitter API Keyを取得する.
 
-  2. data_processer.py - tweets1M.txtから、学習に使用する複数のテキストファイルを生成し、/chatbot_generatedに保存する。
+## 学習データの取得〜コーパス生成
+* tweet_get.pyを実行し、コンソールに取得したいデータ数（ツイート数）を入力する.<br>取得したツイートは"/data/tweets1M.txt"に保存される.
 
-  3. train.py - /chatbot_generatedの各テキストファイルを読み込み、Seq2Seqモデルの学習を行う。学習中は50stepsずつ行い、チェックポイントは/chatbot_generatedに保存される。
+* data_processer.pyを実行する.<br>tweets1M.txtをもとに、学習に必要なテキストファイルが"/chatbot_generated"に生成される.
+
+## モデルの学習
+* train.pyを実行する.<br>学習のチェックポイントは"/chatbot_generated"に保存される.
+
+## モデルの実行
+* tweet_listener.pyおよびtweet_replyer_voicetalk.pyを実行する.<br>APIを取得したアカウントにリプライを送ると、学習モデルによって生成された文章がリプライとして送られてくる.
+
+# 各プログラムの説明
+* tweet_get.py - Twitter APIを通して、Twitterに流れるツイートとそのリプライを"/data/tweets1M.txt"に保存する
+
+* data_processer.py - tweets1M.txtから、学習に使用するテキストファイルを生成し"/chatbot_generated"に保存する
+
+* train.py - /chatbot_generatedの各テキストファイルを読み込みSeq2Seqモデルの学習を行う.<br>学習は50stepsずつ行われ、チェックポイントは/chatbot_generatedに保存される
 　　　　　　　　
-  4. predict.py - 生成されたSeq2Seqモデルを読み込み、コンソール上で会話が行える。
+* predict.py - 生成されたSeq2Seqモデルを用いて会話が行える
 
-  5. tweet_listener.py - APIを使用しているユーザーの、Twitter上の（自分のものも含む）ツイートとリプライを取得し、データベースに保存する。
+* tweet_listener.py - APIを取得したユーザーのtimelineのツイートとリプライを取得し、データベースに保存する
 
-  6. tweet_replyer.py - データベースに他人からのリプライが保存されている場合、Seq2Seqモデルによって返答を生成し、当該ユーザーにリプライを送る。
-
-
-
-# テキストファイルの役割
-  1. tweets1M.txt -  Twitter上のツイートとリプライの文章を、学習に使用できる形にしたもの。
-                  奇数行はツイート、偶数行はリプライとなっている。
-
-
-  2. tweets_enc.txt - tweets1M.txtから、ツイート（奇数行）だけを取り出したもの。
-
-  3. tweets_dec.txt - tweets1M.txtから、リプライ（偶数行）だけを取り出したもの。
-
-  4. tweets_train_enc.txt - tweets_enc.txtを、学習データとテストデータに分けた時の学習データ。
-
-  5. tweets_train_dec.txt - tweets_dec.txtを、学習データとテストデータに分けた時の学習データ。
-
-  6. tweets_val_enc.txt - tweets_enc.txtを、学習データとテストデータに分けた時のテストデータ。
-
-  7. tweets_val_dec.txt - tweets_dec.txtを、学習データとテストデータに分けた時のテストデータ。
-
-  8. tweets_train_enc_idx.txt - tweets_train_enc.txtの文章をid化したもの。
-
-  9. tweets_train_enc_idx.txt - tweets_train_dec.txtの文章をid化したもの。
-
-  10. tweets_val_enc_idx.txt - tweets_val_enc.txtの文章をid化したもの。
-
-  11. tweets_val_enc_idx.txt - tweets_val_dec.txtの文章をid化したもの。
-
-  12. vocab_enc.txt - tweets_enc.txtに出現したボキャブラリ（単語）を1行に1つずつ並べたもの。
-
-  13. vocab_enc.txt - tweets_dec.txtに出現したボキャブラリ（単語）を1行に1つずつ並べたもの。
-
-
+* tweet_replyer_voicetalk.py - データベースにリプライが保存されている場合、Seq2Seqモデルによって返答を生成し、ユーザーにリプライを送る.<br>リプライとその返答を機械音声で発話させることもできる
 
 # デモ
-
-# 引き継ぐ場合
+## 準備中
 
 # 動作環境
-  * Ubuntu 16.04 LTS
-  * Python 3.6.4
+  * Ubuntu 18.04 LTS
+  * Python 3.6.5
   * Tensorflow 1.7.0
 　
