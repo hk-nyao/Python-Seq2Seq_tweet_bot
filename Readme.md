@@ -36,20 +36,26 @@
 * tweet_listener.pyおよびtweet_replyer_voicetalk.pyを実行する.<br>APIを取得したアカウントにリプライを送ると、学習モデルによって生成された文章がリプライとして送られてくる.
 
 # 各プログラムの説明
-* tweet_get.py - Twitter APIを通して、Twitterに流れるツイートとそのリプライを"/data/tweets1M.txt"に保存する
+* config.py:<br>ファイルの参照パスやAPIキーの設定を保存する
 
-* data_processer.py - tweets1M.txtから、学習に使用するテキストファイルを生成し"/chatbot_generated"に保存する
+* tweet_get.py:<br>Twitter APIを通して、Twitterに流れるツイートとそのリプライを"/data/tweets1M.txt"に保存する
 
-* train.py - /chatbot_generatedの各テキストファイルを読み込みSeq2Seqモデルの学習を行う.<br>学習は50stepsずつ行われ、チェックポイントは/chatbot_generatedに保存される
+* line.py:<br>tweets1M.txtのツイート数を表示する
+
+* data_processer.py:<br>tweets1M.txtから、学習に使用するテキストファイルを生成し"/chatbot_generated"に保存する
+
+* /lib内のpyファイル:<br>Seq2Seqモデルの設定を保存する
+
+* train.py:<br>/chatbot_generatedの各テキストファイルを読み込みSeq2Seqモデルの学習を行う.<br>学習は50stepsずつ行われ、チェックポイントは/chatbot_generatedに保存される
 　　　　　　　　
-* predict.py - 生成されたSeq2Seqモデルを用いて会話が行える
+* predict.py:<br>生成されたSeq2Seqモデルを用いて会話が行える
 
-* tweet_listener.py - APIを取得したユーザーのtimelineのツイートとリプライを取得し、データベースに保存する
+* tweet_listener.py:<br>APIを取得したユーザーのtimelineのツイートとリプライを取得し、データベースに保存する
 
-* tweet_replyer_voicetalk.py - データベースにリプライが保存されている場合、Seq2Seqモデルによって返答を生成し、ユーザーにリプライを送る.<br>リプライとその返答を機械音声で発話させることもできる
+* tweet_replyer_voicetalk.py:<br>データベースにリプライが保存されている場合、Seq2Seqモデルによって返答を生成し、ユーザーにリプライを送る.<br>リプライとその返答を機械音声で発話させることもできる
 
 # デモ
-## 準備中
+準備中
 
 # 動作環境
   * Ubuntu 18.04 LTS
