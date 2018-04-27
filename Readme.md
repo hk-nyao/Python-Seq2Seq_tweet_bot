@@ -36,23 +36,23 @@
 * tweet_listener.pyおよびtweet_replyer_voicetalk.pyを実行する.<br>APIを取得したアカウントにリプライを送ると、学習モデルによって生成された文章がリプライとして送られてくる.
 
 # 各プログラムの説明
-* config.py:<br>ファイルの参照パスやAPIキーの設定を保存する
+* <b>config.py:</b><br>ファイルの参照パスやAPIキーの設定を保存する
 
-* tweet_get.py:<br>Twitter APIを通して、Twitterに流れるツイートとそのリプライを"/data/tweets1M.txt"に保存する
+* <b>tweet_get.py:</b><br>Twitter APIを通して、Twitterに流れるツイートとそのリプライを"/data/tweets1M.txt"に保存する
 
-* line.py:<br>tweets1M.txtのツイート数を表示する
+* <b>line.py:</b><br>tweets1M.txtのツイート数を表示する
 
-* data_processer.py:<br>tweets1M.txtから、学習に使用するテキストファイルを生成し"/chatbot_generated"に保存する
+* <b>data_processer.py:</b><br>tweets1M.txtから、学習に使用するテキストファイルを生成し"/chatbot_generated"に保存する
 
-* /lib内のpyファイル:<br>Seq2Seqモデルの設定を保存する
+* <b>/lib内のpyファイル:</b><br>Seq2Seqモデルの設定を保存する
 
-* train.py:<br>/chatbot_generatedの各テキストファイルを読み込みSeq2Seqモデルの学習を行う.<br>学習は50stepsずつ行われ、チェックポイントは/chatbot_generatedに保存される
+* <b>train.py</b>:<br>/chatbot_generatedの各テキストファイルを読み込みSeq2Seqモデルの学習を行う.<br>学習は50stepsずつ行われ、チェックポイントは/chatbot_generatedに保存される
 　　　　　　　　
-* predict.py:<br>生成されたSeq2Seqモデルを用いて会話が行える
+* <b>predict.py:</b><br>生成されたSeq2Seqモデルを用いて会話が行える
 
-* tweet_listener.py:<br>APIを取得したユーザーのtimelineのツイートとリプライを取得し、データベースに保存する
+* <b>tweet_listener.py:</b><br>APIを取得したユーザーのtimelineのツイートとリプライを取得し、データベースに保存する
 
-* tweet_replyer_voicetalk.py:<br>データベースにリプライが保存されている場合、Seq2Seqモデルによって返答を生成し、ユーザーにリプライを送る.<br>リプライとその返答を機械音声で発話させることもできる
+* <b>tweet_replyer_voicetalk.py:</b><br>データベースにリプライが保存されている場合、Seq2Seqモデルによって返答を生成し、ユーザーにリプライを送る.<br>リプライとその返答を機械音声で発話させることもできる
 
 # デモ
 準備中
