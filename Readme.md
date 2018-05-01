@@ -9,7 +9,7 @@
 
 # はじめに
 ## コードの参照元
-本プログラムは以下のサイトを参考に製作しました.<br><https://github.com/1228337123/tensorflow-seq2seq-chatbot><br>
+本プログラムは以下のサイトを参考に製作しました.<br><https://github.com/higepon/tensorflow_seq2seq_chatbot><br>
 参考元からの主な変更点は以下の通りです.<br>
 1. tensorflow 1.7.0で動作するよう、一部のメソッド参照先の書き換えを行なった
 2. ツイートの取得プログラムを自作し、より細かい文章のサニタイズを行なった
