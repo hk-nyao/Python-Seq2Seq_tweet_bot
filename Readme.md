@@ -8,6 +8,8 @@
 
 
 # はじめに
+ * Twitterの規約が更新され、API Keyの取得方法が変わったため、本プログラムによるデータ取得は困難になっています。 *
+
 ## コードの参照元
 本プログラムは以下のサイトを参考に製作しました.<br><https://github.com/higepon/tensorflow_seq2seq_chatbot><br>
 参考元からの主な変更点は以下の通りです.<br>
