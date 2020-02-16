@@ -74,6 +74,7 @@ def _extract_argmax_and_embed(embedding, output_projection=None,
     return emb_prev
   return loop_function
 
+
 def _extract_beam_search(embedding, beam_size, num_symbols, embedding_size,  output_projection=None,
                               update_embedding=True):
   """Get a loop_function that extracts the previous symbol and embeds it.
@@ -586,6 +587,7 @@ def beam_attention_decoder(decoder_inputs, initial_state, attention_states, cell
     for kk in range(1):
         states.append(initial_state)
     state = tf.reshape(tf.concat(axis=0, values=states), [-1, state_size])
+
     def attention(query):
       """Put attention masks on hidden using hidden_features and query."""
       ds = []  # Results of attention reads will be stored here.
@@ -659,6 +661,7 @@ def beam_attention_decoder(decoder_inputs, initial_state, attention_states, cell
           output, output_projection[0], output_projection[1]), axis=1))
 
   return outputs, state, tf.reshape(tf.concat(axis=0, values=beam_path),[-1,beam_size]), tf.reshape(tf.concat(axis=0, values=beam_symbols),[-1,beam_size])
+
 
 def embedding_attention_decoder(decoder_inputs, initial_state, attention_states,
                                 cell, num_symbols, embedding_size, num_heads=1,
@@ -822,8 +825,6 @@ def embedding_attention_seq2seq(encoder_inputs, decoder_inputs, cell_1,cell_2,
           initial_state_attention=initial_state_attention, beam_search=beam_search, beam_size=beam_size)
 
 
-
-
 def sequence_loss_by_example(logits, targets, weights,
                              average_across_timesteps=True,
                              softmax_loss_function=None, name=None):
@@ -958,6 +959,7 @@ def model_with_buckets(encoder_inputs, decoder_inputs, targets, weights,
               softmax_loss_function=softmax_loss_function))
 
   return outputs, losses
+
 
 def decode_model_with_buckets(encoder_inputs, decoder_inputs, targets, weights,
                        buckets, seq2seq, softmax_loss_function=None,

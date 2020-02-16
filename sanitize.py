@@ -10,61 +10,54 @@ tweets = "{0}/tweets1M.txt".format(config.DATA_DIR)
 output = "{0}/tweets100M.txt".format(config.DATA_DIR)
 
 
-#正規表現によるゴミの除去をおこなうメソッド
+# 取得したツイート数の確認
+def count_tweet():
+    print("ツイート数：{}".format(int(len(open(config.TWEETS_TXT).readlines()) / 2.0)))
+
+
+# 正規表現によるコーパス作成を行うメソッド
 def sanitize_text(text):
-    #[]内以外の文字にmatchする
-    tab = "\n"
+    dust = "[^a-zA-Z0-9０−９一-龥ぁ-んァ-ン!！?？〜~ー…:;：；.・、。「」]"
+    spacing = "\n | \s+ | \s+.\s+"
+    single = "\s+.\s+"
     url = r"(https?|ftp)(:\/\/[-_\.!~*'()a-zA-Z0-9;\/?:\@&=\+\$,%#]+)"
     hashtag = r"[#|＃]%s"
     reply = "@[a-zA-Z(),_,0-9]+"
-    dust = "[^a-zA-Z0-9０−９一-龥ぁ-んァ-ン!！?？〜~ー…:;：；.・、。「」]"
-    #（）内の文字ごと（）を消す正規表現
-    kakko = "\(.+?\)"
-    kakko2 = "\（.+?\）"
-    space = "\s+"
-    dust2 = "\s.\s"
-    #last = ".$"
+    # 顔文字など、カッコごと中身を消す正規表現
+    bracket = "\[（(].+?\[)）]"
+    # 同じ文字が4文字以上続くものにマッチ
+    repeat = r"(.)\1{3,}"
 
-    #改行文字(\n)が存在した場合、消す
-    if re.search(tab,text) is not None:
-        #print("existed")
-        text = re.sub(tab,'　',text)
-    #URLが存在した場合、消す
-    if re.search(url,text) is not None:
-        #print("URL existed")
-        text = re.sub(url,'',text)
-    #ハッシュタグを消す
-    if re.search(hashtag,text) is not None:
-        text = re.sub(hashtag,'',text)
-    #リプライidを消す
-    if re.search(reply,text) is not None:
-        text = re.sub(reply,'',text)
-    #半角のカッコを中身ごと消す
-    if re.search(kakko, text) is not None:
-        text = re.sub(kakko, ' ', text)
-    #全角のカッコを中身ごと消す
-    if re.search(kakko2, text) is not None:
-        text = re.sub(kakko2, ' ', text)
-    #日本語または?か!で文が終了し、それ以外に余計なものがついている場合、消す
+    # 改行文字(\n)や複数のスペースを、半角スペースに置き換える
+    if re.search(spacing, text) is not None:
+        text = re.sub(spacing, ' ', text)
+    # URL、ハッシュタグ、リプライidが存在した場合、消す
+    if re.search(url, text) is not None:
+        text = re.sub(url, '', text)
+    if re.search(hashtag, text) is not None:
+        text = re.sub(hashtag, '', text)
+    if re.search(reply, text) is not None:
+        text = re.sub(reply, '', text)
+    # カッコを中身ごと消す
+    if re.search(bracket, text) is not None:
+        text = re.sub(bracket, ' ', text)
+    # 日本語または?か!で文が終了し、それ以外に余計なものがついている場合、消す
     if re.search(dust, text) is not None:
         text = re.sub(dust, ' ', text)
-    #複数のスペースを一つの半角スペースに置き換える
-    if re.search(space,text) is not None:
-        text = re.sub(space, ' ', text)
-    #左右が空白であり、1文字のものを消す
-    while(re.search(dust2,text) is not None):
-        text = re.sub(dust2, ' ', text)
-    #末尾かつ左が空白であり、1文字のものを消す（おはよう　！なら「！」が消える）
-    #if re.search(last,text) is not None:
-    #    text = re.sub(last, '', text)
+    # 左右が空白かつ1文字のものを半角スペースに置き換える
+    if re.search(single, text) is not None:
+        text = re.sub(single, ' ', text)
+    # 同じ文字が4つ以上続いた場合、全て3つの文字とする
+    if re.search(repeat, text) is not None:
+        text = re.sub(repeat, r"\1\1\1", text)
 
     return text.strip()
 
+
 if __name__ == "__main__":
-  with open(tweets,"r") as tweets:
-      with open(output,"w") as output:
-          line = tweets.readline()
-          while(line):
-              output.write(sanitize_text(line))
-              output.write("\n")
-              line = tweets.readline()
+    with open(tweets, "r") as tweets:
+        with open(output, "w") as output:
+            line = tweets.readline()
+            while line:
+                output.write(sanitize_text(line) + "\n")
+                line = tweets.readline()

@@ -1,54 +1,49 @@
 import os
-from sys import platform
+# from sys import platform
 
-#APIの個人情報
-CONSUMER_KEY = 'xxxxxx'
-CONSUMER_SECRET = 'xxxxxx'
-ACCESS_TOKEN = 'xxxxxx'
-ACCESS_TOKEN_SECRET = 'xxxxxx'
+# APIの個人情報
+CONSUMER_KEY = "xxxxxxxxxxxxxxxxxxxx"
+CONSUMER_SECRET = "xxxxxxxxxxxxxxxxxxxx"
+ACCESS_TOKEN = "xxxxxxxxxxxxxxxxxxxx"
+ACCESS_TOKEN_SECRET = "xxxxxxxxxxxxxxxxxxxx"
 
-#プラットフォーム別に環境変数を取得
-if platform == 'linux':
-    GENERATED_DIR = os.getenv("HOME") + "/Seq2Seq_local/chatbot_generated"
-    LOGS_DIR = os.getenv("HOME") + "/Seq2Seq_local/chatbot_train_logs"
-    DATA_DIR = os.getenv("HOME") + "/Seq2Seq_local/data"
 
-else:
-    GENERATED_DIR = os.getenv("HOME") + "/Seq2Seq_local/chatbot_generated"
-    LOGS_DIR = os.getenv("HOME") + "/Seq2Seq_local/chatbot_train_logs"
-    DATA_DIR = os.getenv("HOME") + "/Seq2Seq_local/data"
+GENERATED_DIR = os.getenv("HOME") + "/Seq2Seq_local/chatbot_generated"
+LOGS_DIR = os.getenv("HOME") + "/Seq2Seq_local/chatbot_train_logs"
+DATA_DIR = os.getenv("HOME") + "/Seq2Seq_local/data"
+
 
 is_fast_build = False
 beam_search = True
 beam_size = 20
 
 if is_fast_build:
-    TWEETS_TXT = "{0}/tweets.short.txt".format(DATA_DIR)
+    TWEETS_TXT = DATA_DIR + "/tweets.short.txt"
 
 else:
-    TWEETS_TXT = "{0}/tweets1M.txt".format(DATA_DIR)
+    TWEETS_TXT = DATA_DIR + "/tweets1M.txt"
 
 if is_fast_build:
     MAX_ENC_VOCABULARY = 5
     NUM_LAYERS = 2
     LAYER_SIZE = 2
     BATCH_SIZE = 2
-    buckets = [(5,10), (8,13)]
+    buckets = [(5, 10), (8, 13)]
 
 else:
     MAX_ENC_VOCABULARY = 100000
     NUM_LAYERS = 3
     LAYER_SIZE = 1024
     BATCH_SIZE = 128
-    buckets = [(5,10), (10,15), (20,25), (40,50), (50,60)]
+    buckets = [(5, 10), (10, 15), (20, 25), (40, 50), (50, 60)]
 
 MAX_DEC_VOCABULARY = MAX_ENC_VOCABULARY
 
-#学習率
+# 学習率
 LEARNING_RATE = 0.5
-#学習率減衰係数
+# 学習率減衰係数
 LEARNING_RATE_DECAY_FACTOR = 0.99
-#最大勾配ノルム
+# 最大勾配ノルム
 MAX_GRADIENT_NORM = 5.0
 
 TWEETS_TXT = "{0}/tweets1M.txt".format(DATA_DIR)

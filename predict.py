@@ -7,8 +7,9 @@ import data_processer
 import random
 import sanitize
 
+
 def get_prediction(session, model, enc_vocab, rev_dec_vocab, text):
-    #文章をid化する
+    # 文章をid化する
     token_ids = data_processer.sentence_to_token_ids(text, enc_vocab)
     bucket_id = min([b for b in range(len(config.buckets))
                      if config.buckets[b][0] > len(token_ids)])
@@ -135,12 +136,11 @@ def predict():
         line = sys.stdin.readline()
         while line:
             replies = predictor.predict(line)
-#            for i, text in enumerate(replies):
-#                print(i, text)
             print(replies)
             print("> ", end="")
             sys.stdout.flush()
             line = sys.stdin.readline()
+
 
 if __name__ == '__main__':
     predict()
