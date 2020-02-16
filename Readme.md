@@ -75,7 +75,7 @@ Seq2Seqのモデル部分のコードは殆ど同じですが, 主な変更点�
 
 # 動作環境
   * Ubuntu 18.04 LTS
-  * Python 3.6.5
+  * Python 3.5.9
   * Tensorflow 1.7.0
   * Tweepy 3.8.0
 　
