@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Python-Seq2Seq_tweet_bot.iml" filepath="$PROJECT_DIR$/.idea/Python-Seq2Seq_tweet_bot.iml" />
-      <module fileurl="file://$USER_HOME$/tensorflow_seq2seq_chatbot/.idea/tensorflow_seq2seq_chatbot.iml" filepath="$USER_HOME$/tensorflow_seq2seq_chatbot/.idea/tensorflow_seq2seq_chatbot.iml" />
-    </modules>
-  </component>
-</project>
