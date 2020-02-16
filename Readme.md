@@ -7,11 +7,8 @@
 
 
 # はじめに
-
-
 <img src="demo.png" width="800">
 このプログラムは, PythonとTensorflow-Seq2Seqを用いたTwitter Botです.<br>
-**2020年現在、Twitterの規約が更新され、API Keyの取得には審査が必要となっています.**
 
 ## コードの参照元
 本プログラムは以下のサイトを参考に製作しました.<br><https://github.com/higepon/tensorflow_seq2seq_chatbot><br>
