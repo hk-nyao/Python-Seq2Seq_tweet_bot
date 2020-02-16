@@ -9,7 +9,7 @@
 # はじめに
 
 
-![デモ]()
+<img src="demo.png" width="800">
 このプログラムは, PythonとTensorflow-Seq2Seqを用いたTwitter Botです.
 **2020年現在、Twitterの規約が更新され、API Keyの取得には審査が必要となっています.**
 

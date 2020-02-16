@@ -3,17 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3598078e-3477-43f2-b4c9-54e01bb31a5c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_processer.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_processer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/my_seq2seq.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/my_seq2seq.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/seq2seq_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/seq2seq_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/line.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/predict.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sanitize.py" beforeDir="false" afterPath="$PROJECT_DIR$/sanitize.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tweet_get.py" beforeDir="false" afterPath="$PROJECT_DIR$/tweet_get.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tweet_listener.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tweet_replyer_voicetalk.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,14 +36,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="md" value="656" />
+          <entry key="md" value="694" />
           <entry key="py" value="4070" />
           <entry key="txt" value="70" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Markdown" value="656" />
+          <entry key="Markdown" value="694" />
           <entry key="PLAIN_TEXT" value="70" />
           <entry key="Python" value="4070" />
         </counts>
@@ -156,8 +145,8 @@
         <entry file="file://$PROJECT_DIR$/Readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="170">
-                <caret line="10" column="52" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
+              <first_editor relative-caret-position="187">
+                <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
               </first_editor>
               <second_editor />
             </state>
@@ -205,9 +194,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="68" />
+    <option name="y" value="50" />
+    <option name="width" value="1422" />
+    <option name="height" value="806" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -259,11 +250,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="68" y="23" width="1422" height="806" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21282594" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21556032" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" />
@@ -467,8 +458,8 @@
     <entry file="file://$PROJECT_DIR$/Readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="170">
-            <caret line="10" column="52" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
+          <first_editor relative-caret-position="187">
+            <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
           </first_editor>
           <second_editor />
         </state>
